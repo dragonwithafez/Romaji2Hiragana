@@ -12,7 +12,7 @@ For lyrics such as 「なった」 spread over two notes, they can be entered as
 ### Limitations
 This plugin will overwrite *all* lyrics in the score, including existing kana. Make sure to run only once all romaji have been entered.
 
-は、へ、を must be entered as 'ha', 'he', 'wo', regardless of pronunciation. Code can't read your mind :)
+「は」、「へ」、「を」 must be entered as 'ha', 'he', 'wo', regardless of pronunciation. Code can't read your mind :)
 
 Diacritics are not supported; enter long vowels as double letters, i.e. 「もう」 should be entered as "mou" not mō or mô.
 
@@ -30,7 +30,7 @@ Any non-Japanese lyrics using Latin will be converted to kana with potentially u
 	- ぢ (dji/di)
 	- づ (dzu/zu)
 	- And all -ゃ　-ゅ　-ょ derivatives
-- Plugin now processes whole lyric, allowing for polysyllabic lyrics such as 「なき」、「さあ」、　「しかし」、etc.
+- Plugin now processes whole lyric, allowing for polysyllabic lyrics such as 「なき」、「さあ」、「しかし」、etc.
 
 #### Before and after using plugin (OLD, WILL BE UPDATED)
 ![image](beforeandafter.png)
