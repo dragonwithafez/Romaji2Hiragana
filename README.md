@@ -6,7 +6,7 @@ Makes kana lyric entry easier to work around MS3's issues with kana entry using 
 This version is forked from the original to add major improvements, since the original seems to be abandoned.
 
 ### Usage
-Set the lyrics of your composition in MuseScore3 to romaji. Running the plugin will convert all lyrics to their respective kana. Supports multiple romanizations of kana such as shi/si-し、dji/di-ぢ、etc.
+Enter the romaji lyrics of your composition in MuseScore3. Running the plugin will convert all lyrics to their respective kana. Supports multiple romanizations of kana such as shi/si-し、dji/di-ぢ、etc.
 For lyrics such as 「なった」 spread over two notes, they can be entered as either nat -ta or na -tta, depending on whether you want なっ -た or な -った
 
 ### Limitations
@@ -14,9 +14,9 @@ This plugin will overwrite *all* lyrics in the score, including existing kana. M
 
 「は」、「へ」、「を」 must be entered as 'ha', 'he', 'wo', regardless of pronunciation. Code can't read your mind :)
 
-Diacritics are not supported; enter long vowels as double letters, i.e. 「もう」 should be entered as "mou" not mō or mô.
+Diacritics are not supported; enter long vowels as double letters, i.e. 「もう」 should be entered as "mou" not "mō" or "mô".
 
-Any non-Japanese lyrics using Latin will be converted to kana with potentially unwanted results. Either change them manually afterwards, or don't enter mixed-language lyrics until after kana conversion is complete.
+Any non-Japanese lyrics using Latin characters will be converted to kana with potentially unwanted results. Either change them manually afterwards, or don't enter mixed-language lyrics until after kana conversion is complete.
 
 ### Changelog
 
