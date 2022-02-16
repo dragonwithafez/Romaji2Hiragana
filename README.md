@@ -14,7 +14,7 @@ This plugin will overwrite *all* lyrics in the score, including existing kana. M
 
 「は」、「へ」、「を」 must be entered as 'ha', 'he', 'wo', regardless of pronunciation. Code can't read your mind :)
 
-Diacritics are not supported; enter long vowels as double letters, i.e. 「もう」 should be entered as "mou" not mō or mô.
+Diacritics are not supported; enter long vowels as double letters, i.e. 「もう」 should be entered as "mou" not "mō" or "mô".
 
 Any non-Japanese lyrics using Latin will be converted to kana with potentially unwanted results. Either change them manually afterwards, or don't enter mixed-language lyrics until after kana conversion is complete.
 
