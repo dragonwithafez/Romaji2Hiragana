@@ -4,7 +4,7 @@ import MuseScore 3.0
 MuseScore {
     menuPath: "Plugins.Romaji2Hiragana"
     description: "Convert romaji lyrics to hiragana."
-    version: "1.0"
+    version: "1.1"
     onRun: {
         var kana = {
             a: 'あ',
@@ -21,25 +21,31 @@ MuseScore {
             gi: 'ぎ',
             gu: 'ぐ',
             ge: 'げ',
-            go: 'ご ',
+            go: 'ご',
             sa: 'さ',
             shi: 'し',
+            si: 'し',
             su: 'す',
             se: 'せ',
             so: 'そ',
             za: 'ざ',
             ji: 'じ',
+            zi: 'じ',
             zu: 'ず',
             ze: 'ぜ',
             zo: 'ぞ',
             ta: 'た',
             chi: 'ち',
+            ti: 'ち',
             tsu: 'つ',
+            tu: 'つ',
             te: 'て',
             to: 'と',
             da: 'だ',
             dzi: 'ぢ',
+            di: 'ぢ',
             dzu: 'づ',
+            du: 'づ',
             de: 'で',
             do: 'ど',
             na: 'な',
@@ -50,17 +56,18 @@ MuseScore {
             ha: 'は',
             hi: 'ひ',
             fu: 'ふ',
+            hu: 'ふ',
             he: 'へ',
             ho: 'ほ',
             ba: 'ば',
             bi: 'び',
             bu: 'ぶ',
             be: 'べ',
-            bo: 'ぺ',
+            bo: 'ぼ',
             pa: 'ぱ',
             pi: 'ぴ',
             pu: 'ぷ',
-            pe: 'ぼ',
+            pe: 'ぺ',
             po: 'ぽ',
             ma: 'ま',
             mi: 'み',
@@ -80,6 +87,7 @@ MuseScore {
             we: 'ゑ',
             wo: 'を',
             n: 'ん',
+            m: 'ん',
             kya: 'きゃ',
             kyu: 'きゅ',
             kyo: 'きょ',
@@ -89,18 +97,27 @@ MuseScore {
             sha: 'しゃ',
             shu: 'しゅ',
             sho: 'しょ',
-            jya: 'じゃ',
+            sya: 'しゃ',
+            syu: 'しゅ',
+            syo: 'しょ',
             ja: 'じゃ',
-            jyu: 'じゅ',
             ju: 'じゅ',
-            jyo: 'じょ',
             jo: 'じょ',
+            jya: 'じゃ',
+            jyu: 'じゅ',
+            jyo: 'じょ',
             cha: 'ちゃ',
             chu: 'ちゅ',
             cho: 'ちょ',
+            tya: 'ちゃ',
+            tyu: 'ちゅ',
+            tyo: 'ちょ',
             dzya: 'ぢゃ',
             dzyu: 'ぢゅ',
             dzyo: 'ぢょ',
+            dya: 'ぢゃ',
+            dyu: 'ぢゅ',
+            dyo: 'ぢょ',
             nya: 'にゃ',
             nyu: 'にゅ',
             nyo: 'にょ',
@@ -118,36 +135,54 @@ MuseScore {
             myo: 'みょ',
             rya: 'りゃ',
             ryu: 'りゅ',
-            ryo: 'りょ'
+            ryo: 'りょ',
+            k: 'っ',
+            s: 'っ',
+            j: 'っ',
+            z: 'っ',
+            t: 'っ',
+            d: 'っ',
+            h: 'っ',
+            f: 'っ',
+            b: 'っ',
+            p: 'っ',
+            y: 'っ',
+            r: 'っ',
+            w: 'っ',
+
         };
 
-        var cursor = curScore.newCursor();
-        var sArray= new Array();
-        for (var track = 0; track < curScore.ntracks; ++track) {
+        var cursor = curScore.newCursor(); for (var track = 0; track < curScore.ntracks; ++track) {
             cursor.track = track;
             cursor.rewind(0);  // set cursor to first chord/rest
+            var cLyric;
             while (cursor.segment) {
-                if (cursor.element && cursor.element.type == Element.CHORD) {
+                if (cursor.element && cursor.element.type === Element.CHORD) {
                     var lyrics = cursor.element.lyrics;
-                    for (var i = 0; i < lyrics.length; i++) {
+                    for (var i = 0; i < lyrics.length; i++) { //iterate through lyrics
                         var l = lyrics[i];
+                        //console.log("Full lyric: "+l.text);
+                        cLyric = "";
                         if (!l)
                             continue;
-                        if (sArray[i] == undefined)
-                            sArray[i] = "";
-                        else {
-                            if (kana[l.text.toLowerCase()] == undefined) continue;
-                            sArray[i] += kana[l.text.toLowerCase()];
-                            l.text = kana[l.text.toLowerCase()];
+                        for(var j = 0; j < l.text.length; ++j){ //start at first character of lyric
+                            for(var k = l.text.length; k >= 0; --k){ //squeeze in towards the beginning until it finds something
+                                //console.log("Checking "+l.text.substring(j, k)+" of "+l.text);
+                                if(kana[l.text.substring(j,k)] !== undefined){
+                                    //console.log("Kana found: "+kana[l.text.substring(j, k)]);
+                                    cLyric += kana[l.text.substring(j, k)];
+                                    j += l.text.substring(j, k).length-1;
+                                    k = l.text.length;
+                                    break;
+                                }
+                            }
                         }
                     }
+                    l.text = cLyric;
+                    //console.log("Full kana: "+cLyric);
                 }
                 cursor.next();
             }
-        }
-
-        for (var i = 0; i < sArray.length; i++) {
-            console.log(sArray[i]);
         }
 
         Qt.quit();
