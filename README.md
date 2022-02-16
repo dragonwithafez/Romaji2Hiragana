@@ -42,6 +42,7 @@ Any non-Japanese lyrics using Latin will be converted to kana with potentially u
 	- And all -ゃ　-ゅ　-ょ derivatives
 - Plugin now processes whole lyric, allowing for polysyllabic lyrics such as 「なき」、「さあ」、「しかし」、etc.
 
-#### Before and after using plugin (OLD, WILL BE UPDATED)
-![image](beforeandafter.png)
+#### Before and after using plugin
+Before: ![image](before-1.png)
+After: ![image](after-1.png)
 
