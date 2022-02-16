@@ -4,7 +4,7 @@ import MuseScore 3.0
 MuseScore {
     menuPath: "Plugins.Romaji2Hiragana"
     description: "Convert romaji lyrics to hiragana."
-    version: "1.1"
+    version: "1.1.1"
     onRun: {
         var kana = {
             a: 'あ',
@@ -149,6 +149,10 @@ MuseScore {
             y: 'っ',
             r: 'っ',
             w: 'っ',
+            _: '_',
+            '.': '。',
+            ',': '、',
+            '?': '？'
 
         };
 
@@ -168,9 +172,9 @@ MuseScore {
                         for(var j = 0; j < l.text.length; ++j){ //start at first character of lyric
                             for(var k = l.text.length; k >= 0; --k){ //squeeze in towards the beginning until it finds something
                                 //console.log("Checking "+l.text.substring(j, k)+" of "+l.text);
-                                if(kana[l.text.substring(j,k)] !== undefined){
+                                if(kana[l.text.substring(j,k).toLowerCase()] !== undefined){
                                     //console.log("Kana found: "+kana[l.text.substring(j, k)]);
-                                    cLyric += kana[l.text.substring(j, k)];
+                                    cLyric += kana[l.text.substring(j, k).toLowerCase()];
                                     j += l.text.substring(j, k).length-1;
                                     k = l.text.length;
                                     break;
