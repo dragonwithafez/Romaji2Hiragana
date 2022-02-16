@@ -18,7 +18,8 @@ Diacritics are not supported; enter long vowels as double letters, i.e. 「も�
 
 Any non-Japanese lyrics using Latin will be converted to kana with potentially unwanted results. Either change them manually afterwards, or don't enter mixed-language lyrics until after kana conversion is complete.
 
-### Changes from version 1.0
+### Changelog
+#### Changes from version 1.0
 - Edited kana conversion list to fix incorrect conversion of certain kana
 - Added single consonant-to-っ conversion
 - Added alternate conversions for morae containing:
