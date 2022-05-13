@@ -4,7 +4,7 @@ import MuseScore 3.0
 MuseScore {
     menuPath: "Plugins.Romaji2Hiragana"
     description: "Convert romaji lyrics to hiragana."
-    version: "1.1.2"
+    version: "1.2.0"
     onRun: {
         var kana = {
             a: 'あ',
@@ -155,6 +155,9 @@ MuseScore {
             '?': '？',
             '「': '「',
             '」': '」',
+            '。': '。',
+            '、': '、',
+            '？': '？',
             あ: 'あ',
             い: 'い',
             う: 'う',
@@ -318,42 +321,40 @@ MuseScore {
             ン: 'ン',
             ー: 'ー',
             ッ: 'ッ'
-            
         };
 
         var cursor = curScore.newCursor();
+        
         for (var track = 0; track < curScore.ntracks; ++track) {
             cursor.track = track;
             cursor.rewind(0);  // set cursor to first chord/rest
-            var cLyric = "";
+            var cLyric = ""; //temporary variable to hold contents of the converted lyric
+            
             while (cursor.segment) {
                 if (cursor.element && cursor.element.type === Element.CHORD) {
                     var lyrics = cursor.element.lyrics;
+                    
                     for (var i = 0; i < lyrics.length; i++) { //iterate through lyrics
-                        var l = lyrics[i];
-                        //console.log("Full lyric: "+l.text);
-                        cLyric = "";
-                        if (!l)
-                            continue;
+                        var l = lyrics[i]; //grab the current lyric from the lyrics array
+                        cLyric = ""; //reset value of cLyric for each iteration
+                        
+                        if (!l)       //this was in the original code and honestly I don't know the point of it
+                            continue; //but I don't want to remove it unless I'm sure it is useless
                         for(var j = 0; j < l.text.length; ++j){ //start at first character of lyric
                             for(var k = l.text.length; k >= 0; --k){ //squeeze in towards the beginning until it finds something
-                                //console.log("Checking "+l.text.substring(j, k)+" of "+l.text);
                                 if(kana[l.text.substring(j,k).toLowerCase()] !== undefined){
-                                    //console.log("Kana found: "+kana[l.text.substring(j, k)]);
                                     cLyric += kana[l.text.substring(j, k).toLowerCase()];
                                     j += l.text.substring(j, k).length-1;
-                                    k = l.text.length;
-                                    break;
+                                    break; //something has been found, the inner loop is done for now
                                 }
                             }
                         }
+                        if(l && (l.text != "")){ //make sure lyric is not empty to avoid type conversion issues
+                              l.text = cLyric;
+                        }
                     }
-                    if(l){
-                        l.text = cLyric;
-                    }
-                    //console.log("Full kana: "+cLyric);
                 }
-                cursor.next();
+                cursor.next(); //move on to next chord in score
             }
         }
 
