@@ -13,7 +13,7 @@ The plugin will preserve existing kana, both hiragana and katakana.
 Download the latest release from the Releases sidebar, or clone the repository. Unzip the downloaded files into MuseScore's Plugins folder, then open MuseScore, navigate to the Plugin Manager and check Romaji2Hiragana. If desired for space reasons, you may delete any files within the extracted directory except "Romaji2Hiragana.qml".
 
 #### Uninstallation
-Delete the Romaji2Katakana folder from MuseScore's Plugins folder.
+Delete the Romaji2Hiragana folder from MuseScore's Plugins folder.
 
 ### Usage
 Enter the romaji lyrics of your composition in MuseScore 3. Running the plugin will convert all lyrics written in the Latin alphabet to their respective kana, preserving existing kana and punctuation.
