@@ -16,7 +16,7 @@ Download the latest release from the Releases sidebar, or clone the repository. 
 Delete the Romaji2Katakana folder from MuseScore's Plugins folder.
 
 ### Usage
-Enter the romaji lyrics of your composition in MuseScore 3. Running the plugin will convert all lyrics written in the Latin alphabet to their respective kana, preserving existing kana and punctuation. Supports multiple romanizations of kana such as 'shi'/'si'-「し」、'dji'/'di'-「ぢ」、etc.
+Enter the romaji lyrics of your composition in MuseScore 3. Running the plugin will convert all lyrics written in the Latin alphabet to their respective kana, preserving existing kana and punctuation.
 
 For lyrics such as 「なった」 spread over two notes, they can be entered as either 'nat -ta' or 'na -tta', depending on whether you want 「なっ -た」 or 「な -った」.
 
@@ -35,11 +35,14 @@ Diacritics are not supported; enter long vowels as double letters, i.e. 「も�
 
 Any non-Japanese lyrics using Latin characters will be converted to kana with potentially unwanted results. Either change them manually afterwards, or don't enter mixed-language lyrics until after kana conversion is complete.
 
+As of version 1.2.1, the plugin no longer supports multiple romanizations of kana such as 'shi'/'si'-「し」、'dji'/'di'-「ぢ」、etc. Only one conversion per kana is supported. See https://github.com/dragonwithafez/Romaji2Hiragana/wiki/Conversion-table for current kana conversion table.
+
 ### Changelog
 
-#### Changes in version 1.2.1 (pending release)
-- Fix https://github.com/dragonwithafez/Romaji2Hiragana-Plugin/issues/4
-- Fix an issue with conversion of exclamation marks
+#### Changes in version 1.2.1
+- Remove alternate conversions of certain kana in preparation for next major update. See https://github.com/dragonwithafez/Romaji2Hiragana/wiki/Conversion-table for current kana conversion table
+- Fix https://github.com/dragonwithafez/Romaji2Hiragana/issues/5
+- Fix https://github.com/dragonwithafez/Romaji2Hiragana/issues/4
 
 #### Changes in version 1.2.0
 - Fix https://github.com/dragonwithafez/Romaji2Hiragana-Plugin/issues/3
