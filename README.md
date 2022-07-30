@@ -16,28 +16,23 @@ Download the latest release from the Releases sidebar, or clone the repository. 
 Delete the Romaji2Hiragana folder from MuseScore's Plugins folder.
 
 ### Usage
-Enter the romaji lyrics of your composition in MuseScore 3. Running the plugin will convert all lyrics written in the Latin alphabet to their respective kana, preserving existing kana and punctuation.
+Enter the romaji lyrics of your composition in MuseScore 3. Running the plugin will convert all lyrics written in the Latin alphabet within the current selection to their respective kana, preserving existing kana and punctuation.
 
 For lyrics such as 「なった」 spread over two notes, they can be entered as either 'nat -ta' or 'na -tta', depending on whether you want 「なっ -た」 or 「な -った」.
-
-#### Sample workflow:
-1) Begin entering rōmaji for any hiragana lyrics
-2) Run the Romaji2Hiragana plugin to convert all Latin lyrics to hiragana
-3) Begin entering rōmaji for any katakana lyrics
-4) Run the Romaji2Katakana plugin to convert all Latin lyrics to katakana (preserving the existing kana)
-5) Repeat 1 - 4 until all kana are entered
-6) Enter any Latin lyrics *last* to avoid conversion to kana
 
 ### Limitations
 「は」、「へ」、「を」 must be entered as 'ha', 'he', 'wo', regardless of pronunciation. Code can't read your mind :)
 
 Diacritics are not supported; enter long vowels as double letters, i.e. 「もう」 should be entered as "mou" not "mō" or "mô".
 
-Any non-Japanese lyrics using Latin characters will be converted to kana with potentially unwanted results. Either change them manually afterwards, or don't enter mixed-language lyrics until after kana conversion is complete.
+Any non-Japanese lyrics using Latin characters in the current selection will be converted to kana with potentially unwanted results. Make sure any such lyrics are not selected when running the plugin.
 
 As of version 1.2.1, the plugin no longer supports multiple romanizations of kana such as 'shi'/'si'-「し」、'dji'/'di'-「ぢ」、etc. Only one conversion per kana is supported. See https://github.com/dragonwithafez/Romaji2Hiragana/wiki/Conversion-table for current kana conversion table.
 
 ### Changelog
+
+#### Changes in version 2.0.0 (pending release)
+- Implement https://github.com/dragonwithafez/Romaji2Hiragana/issues/6 (Plugin no longer affects entire score)
 
 #### Changes in version 1.2.1
 - Remove alternate conversions of certain kana in preparation for next major update. See https://github.com/dragonwithafez/Romaji2Hiragana/wiki/Conversion-table for current kana conversion table
