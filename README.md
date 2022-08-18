@@ -33,6 +33,7 @@ As of version 1.2.1, the plugin no longer supports multiple romanizations of kan
 
 #### Changes in version 2.0.0 (pending release)
 - Implement https://github.com/dragonwithafez/Romaji2Hiragana/issues/6 (Plugin no longer affects entire score)
+- Fix https://github.com/dragonwithafez/Romaji2Hiragana/issues/8
 
 #### Changes in version 1.2.1
 - Remove alternate conversions of certain kana in preparation for next major update. See https://github.com/dragonwithafez/Romaji2Hiragana/wiki/Conversion-table for current kana conversion table
