@@ -72,6 +72,5 @@ As of version 1.2.1, the plugin no longer supports multiple romanizations of kan
 - Plugin now processes whole lyric, allowing for polysyllabic lyrics such as 「なき」、「さあ」、「しかし」、etc.
 
 #### Before and after using plugin
-Before: ![image](before-1.png)
-After: ![image](after-1.png)
+![image](before_after.png)
 
