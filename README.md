@@ -73,4 +73,3 @@ As of version 1.2.1, the plugin no longer supports multiple romanizations of kan
 
 #### Before and after using plugin
 ![image](before_after.png)
-
