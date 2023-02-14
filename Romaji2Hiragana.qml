@@ -7,7 +7,7 @@ import MuseScore 3.0
 MuseScore {
       menuPath: "Plugins.Romaji2Hiragana"
       description: "Convert romaji lyrics to hiragana."
-      version: "2.0.0"
+      version: "2.0.1"
       onRun: {
             var kana = { // kana conversion table
                   a: 'あ',
@@ -330,13 +330,13 @@ MuseScore {
                   startSegment: cursor.segment,
                   end: null,
                   endSegment: null,
-                  startStaff: cursor.staffIdx,
-                  endStaff: null
+                  startTrack: cursor.track,
+                  endTrack: null
             };
             
             // GET END OF SELECTION
             cursor.rewind(2); // set cursor to end of selection
-            selection.endStaff = cursor.staffIdx;
+            selection.endTrack = cursor.track; // record last track of selection
             if (cursor.tick == 0) {
                   // this happens when the selection includes
                   // the last measure of the score.
@@ -351,21 +351,21 @@ MuseScore {
             }
             
             // BEGIN MAIN CONVERSION LOGIC
-            for (var curStaff = selection.startStaff; curStaff <= selection.endStaff; curStaff++) { // make sure we check all staves in the selection
+            for (var curTrack = selection.startTrack; curTrack <= selection.endTrack; curTrack++) { // make sure we check all tracks in the selection
                   var segment = selection.startSegment;
                   cursor.rewind(1); //set cursor to start of selection
-                  cursor.staffIdx = curStaff; // move cursor to current staff
+                  cursor.track = curTrack; // update cursor to current track
                           
                   while(cursor.segment && (cursor.tick < selection.end)) { // iterate through selection
                         if (cursor.element && cursor.element.type === Element.CHORD) {
                               var lyrics = cursor.element.lyrics;
 
-                              for (var i = 0; i < lyrics.length; i++) { // iterate through lyrics in current staff
+                              for (var i = 0; i < lyrics.length; i++) { // iterate through lyrics in current track
                                     var l = lyrics[i]; // grab the current lyric from the lyrics array
                                     cLyric = ""; // reset value of cLyric for each iteration
 
-                                    if (!l){        // this was in the original code and honestly I don't know the point of it
-                                          continue; // but I don't want to remove it unless I'm sure it is useless
+                                    if (!l){ // skip to next lyric if this one is empty
+                                          continue;
                                     }
                                     for(var j = 0; j < l.text.length; ++j){ // start at first character of lyric
                                           for(var k = l.text.length; k >= 0; --k){ // squeeze in towards the beginning until it finds something
@@ -383,7 +383,7 @@ MuseScore {
                         }
                         cursor.next(); // move to next segment
                   } // done iterating over current staff's selection
-            } // done iterating over every staff
+            } // done iterating over every track
             Qt.quit();
       }
 }
