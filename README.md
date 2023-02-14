@@ -31,6 +31,9 @@ As of version 1.2.1, the plugin no longer supports multiple romanizations of kan
 
 ### Changelog
 
+#### Changes in version 2.0.1
+- Fix an issue with conversion of lyrics in voices other than voice 1
+
 #### Changes in version 2.0.0
 - Implement https://github.com/dragonwithafez/Romaji2Hiragana/issues/6 (Plugin no longer affects entire score)
 - Fix https://github.com/dragonwithafez/Romaji2Hiragana/issues/8
